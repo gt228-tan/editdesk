@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EditDesk | Client Portal by GT Edits - Video Editor & Agency Workspace</title>
+  <meta name="description"
+    content="EditDesk is the all-in-one client portal designed for video editors, freelance creatives, and creative agencies. Powered by Google Gemini AI and Google Drive API v3.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="site-header" id="navbar">
+    <div class="container navbar-container">
+      <!-- LOGO -->
+      <a href="#" class="logo" aria-label="EditDesk Home">
+        <div class="logo-mark">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M4 6C4 4.89543 4.89543 4 6 4H18C19.1046 4 20 4.89543 20 6V18C20 19.1046 19.1046 20 18 20H6C4.89543 20 4 19.1046 4 18V6Z"
+              stroke="#16A34A" stroke-width="2" />
+            <path d="M9 8L15 12L9 16V8Z" fill="#16A34A" />
+            <circle cx="17" cy="7" r="2" fill="#16A34A" />
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">EditDesk</span>
+          <span class="logo-tag">by GT Edits</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" id="navMenu" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#value-prop" class="nav-link">Value Proposition</a></li>
+          <li><a href="#how-it-works" class="nav-link">Key Features</a></li>
+          <li><a href="#future-scope" class="nav-link">Roadmap</a></li>
+          <li><a href="EditDesk.pptx" download class="nav-link">Download Deck (.pptx)</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+
+        <a href="https://instagram.com/gt._.edits" target="_blank" rel="noopener noreferrer" class="social-cred-btn"
+          title="GT Edits Instagram Credentials">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg>
+          <span>@gt._.edits</span>
+        </a>
+        <a href="https://gtedits-clientportal.vercel.app/" class="btn btn-primary nav-portal-btn">
+          <span>Client Portal</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-content">
+      <ul class="drawer-links">
+        <li><a href="#hero" class="drawer-link">Home</a></li>
+        <li><a href="#value-prop" class="drawer-link">Value Proposition</a></li>
+        <li><a href="#how-it-works" class="drawer-link">Key Features</a></li>
+        <li><a href="#future-scope" class="drawer-link">Future Scope</a></li>
+        <li><a href="EditDesk.pptx" download class="drawer-link">Download Deck (.pptx)</a></li>
+      </ul>
+
+    </div>
+  </div>
+
+  <main>
+    <!-- SECTION 1: HERO (Matches Reference Wireframe Top Section) -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <!-- Left: Text Content -->
+        <div class="hero-content">
+          <div class="hero-pill">
+            <span class="pill-dot"></span>
+            <span>Client Portal by GT Edits &bull; AI Powered</span>
+          </div>
+
+          <h1 class="hero-title">
+            The Client Portal Built For <span class="brand-accent">Video Editors</span> & Creative Agencies
+          </h1>
+
+          <p class="hero-description">
+            EditDesk simplifies communication, project tracking, deliverable approvals, and payment management. Powered
+            by Google Gemini API for AI briefs and cost estimation, plus Google Drive API v3 for hands-free asset
+            automation.
+          </p>
+
+          <!-- Wireframe BUTTON -->
+          <div class="hero-cta-group">
+            <a href="#" class="btn btn-primary btn-lg" id="heroPortalBtn">
+              <span>Launch Client Portal</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+            <a href="#how-it-works" class="btn btn-secondary btn-lg">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3" />
+              </svg>
+              <span>See Key Features</span>
+            </a>
+          </div>
+
+
+        </div>
+
+        <!-- Right: Visual Media Box (Cross Box in Wireframe) -->
+        <div class="hero-media-wrapper">
+          <div class="mockup-card">
+            <div class="mockup-header">
+              <div class="window-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="window-title">EditDesk &mdash; Live Project Hub & Gemini AI</div>
+              <div class="window-badge">
+                <span class="pulse-indicator"></span> Synced v3.1
+              </div>
+            </div>
+            <div class="mockup-image-box">
+              <img src="assets/images/hero-mockup.jpg"
+                alt="EditDesk Video Editor Client Portal Interface with Gemini AI Brief Planner and Google Drive Cloud Sync"
+                class="hero-mockup-img">
+
+              <!-- Floating Interactive Badges -->
+              <div class="floating-badge badge-top-right">
+                <div class="badge-icon badge-icon-brand">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z" />
+                  </svg>
+                </div>
+                <div class="badge-text">
+                  <strong>Gemini AI Planner</strong>
+                  <span>Cost: $1,450 &bull; 48hr ETA</span>
+                </div>
+              </div>
+
+              <div class="floating-badge badge-bottom-left">
+                <div class="badge-icon badge-icon-brand">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 15a4 4 0 004 4h11a3 3 0 001.8-5.4 5 5 0 00-9.8-1.6A4 4 0 003 15z" />
+                  </svg>
+                </div>
+                <div class="badge-text">
+                  <strong>Drive API v3 Automated</strong>
+                  <span>Dedicated Client Folders Created</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: VALUE PROPOSITION (Matches Reference Wireframe 2nd Section) -->
+    <section class="value-prop-section" id="value-prop">
+      <div class="container value-prop-container">
+        <!-- Left: Heading & Narrative Description -->
+        <div class="value-prop-left">
+          <span class="section-tag">Value Proposition</span>
+          <h2 class="section-title">
+            Stop Juggling Messy Emails, Lost Drive Links & Unclear Video Feedback
+          </h2>
+          <p class="section-description">
+            Video editing and creative direction are demanding enough without dealing with fragmented WhatsApp messages,
+            ambiguous revision notes, missing project assets, and awkward payment follow-ups.
+          </p>
+          <p class="section-description">
+            <strong>EditDesk by GT Edits</strong> is tailored to resolve every friction point in creative collaboration.
+            From the moment a client shares their initial idea to final milestone settlement, everything stays organized
+            in one transparent portal.
+          </p>
+
+          <div class="value-stats-box">
+            <div class="quote-bar"></div>
+            <div>
+              <p class="quote-text">
+                "Our AI estimates project costs by matching client keywords with your predefined rate chart, cutting
+                quote turnaround from days to seconds."
+              </p>
+              <span class="quote-author">&mdash; GT Edits Platform Standard</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Checklist with Checkmarks (Matches Wireframe's 3+ Checkmarks) -->
+        <div class="value-prop-right">
+          <div class="checklist-card">
+            <h3 class="checklist-title">Everything Video Creators Need to Scale</h3>
+
+            <ul class="checklist-list">
+              <!-- Checklist Item 1 -->
+              <li class="checklist-item">
+                <div class="check-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <div class="check-content">
+                  <h4>AI Brief Planner & Smart Cost Estimation</h4>
+                  <p>Powered by Google Gemini API to parse client requests, pinpoint missing project specs, recommend
+                    ideal video resolutions & formats, and automatically calculate estimated pricing against your rate
+                    chart.</p>
+                </div>
+              </li>
+
+              <!-- Checklist Item 2 -->
+              <li class="checklist-item">
+                <div class="check-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <div class="check-content">
+                  <h4>Google Drive API v3 Automatic Folder Provisioning</h4>
+                  <p>Instantly spins up dedicated client workspaces, organizes raw footage inputs, project files, and
+                    deliverable review directories with zero manual drag-and-drop setup.</p>
+                </div>
+              </li>
+
+              <!-- Checklist Item 3 -->
+              <li class="checklist-item">
+                <div class="check-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <div class="check-content">
+                  <h4>Two-Way Email & Workflow Updates</h4>
+                  <p>Admins manage new work requests, approve or request revisions; clients get clear notifications for
+                    draft releases, deliverable reviews, and timely payment reminders.</p>
+                </div>
+              </li>
+
+              <!-- Checklist Item 4 -->
+              <li class="checklist-item">
+                <div class="check-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <div class="check-content">
+                  <h4>Deliverables, Revision Approvals & Secure Payments</h4>
+                  <p>Clients can approve, reject, or comment on video versions in place. Protect your creative agency by
+                    linking final master delivery directly to milestone approval.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Key Features (Matches Reference Wireframe 3rd Section) -->
+    <section class="how-it-works-section" id="how-it-works">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Workflow</span>
+          <h2 class="section-title">Key Features</h2>
+          <p class="section-subtitle">
+            A frictionless, automated three-step journey from raw client concept to finalized video deliverable.
+          </p>
+        </div>
+
+        <!-- 3 Cards in a Row (as depicted in Wireframe) -->
+        <div class="steps-grid">
+          <!-- Step Card 1 -->
+          <div class="step-card">
+            <div class="step-card-header">
+              <span class="step-number">01</span>
+              <div class="step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z" />
+                </svg>
+              </div>
+            </div>
+            <h3 class="step-card-title">Gemini AI Briefing & Costing</h3>
+            <p class="step-card-text">
+              Clients input project vision. Google Gemini API analyzes keywords, asks targeted follow-ups, recommends
+              deadlines & output formats, and matches tasks against your predefined rate chart to generate an accurate
+              brief and quote.
+            </p>
+            <div class="step-card-footer">
+              <span class="step-pill">Automated Scoping</span>
+            </div>
+          </div>
+
+          <!-- Step Card 2 -->
+          <div class="step-card highlight">
+            <div class="step-card-header">
+              <span class="step-number">02</span>
+              <div class="step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z" />
+                </svg>
+              </div>
+            </div>
+            <h3 class="step-card-title">Google Drive Auto-Sync</h3>
+            <p class="step-card-text">
+              Upon brief approval, EditDesk triggers Google Drive API v3 to instantly generate client project
+              hierarchies, upload targets for raw footage, and a private quick-deliverable admin panel to cut out manual
+              setup tasks.
+            </p>
+            <div class="step-card-footer">
+              <span class="step-pill">Zero Manual Folders</span>
+            </div>
+          </div>
+
+          <!-- Step Card 3 -->
+          <div class="step-card">
+            <div class="step-card-header">
+              <span class="step-number">03</span>
+              <div class="step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 11l3 3L22 4" />
+                  <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+                </svg>
+              </div>
+            </div>
+            <h3 class="step-card-title">Review, Revise & Get Paid</h3>
+            <p class="step-card-text">
+              Clients review draft cuts, submit timecode-based feedback, approve milestones, or request revisions.
+              Automated email notifications keep everyone in sync, and final high-res renders are delivered as payment
+              clears.
+            </p>
+            <div class="step-card-footer">
+              <span class="step-pill">Milestone Settlement</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+    <!-- SECTION 7: FUTURE SCOPE / ROADMAP (from sitedetail.md) -->
+    <section class="future-scope-section" id="future-scope">
+      <div class="container">
+        <div class="roadmap-wrapper">
+          <div class="section-header text-center">
+            <span class="section-tag">Roadmap</span>
+            <h2 class="section-title">The Future of EditDesk</h2>
+            <p class="section-subtitle">
+              We are constantly innovating to build the premier creative client management suite. Here is what is
+              arriving in upcoming releases.
+            </p>
+          </div>
+
+          <div class="roadmap-grid">
+            <div class="roadmap-item">
+              <div class="roadmap-badge in-progress">In Development</div>
+              <h4>Multi-Team Agency Workspaces</h4>
+              <p>Expand EditDesk to support multi-editor creative agencies with granular role permissions and client
+                assignments.</p>
+            </div>
+
+            <div class="roadmap-item">
+              <div class="roadmap-badge upcoming">Upcoming</div>
+              <h4>AI Financial Analytics & Revenue</h4>
+              <p>Predictive studio revenue tracking, project margin calculations, and client lifetime value reporting.
+              </p>
+            </div>
+
+            <div class="roadmap-item">
+              <div class="roadmap-badge upcoming">Upcoming</div>
+              <h4>Automated Payment Reminders</h4>
+              <p>Automated custom email and SMS schedules to notify clients before due dates with one-click payment
+                links.</p>
+            </div>
+
+            <div class="roadmap-item">
+              <div class="roadmap-badge upcoming">Upcoming</div>
+              <h4>Real-Time In-Portal Chat</h4>
+              <p>Direct live messaging between client and assigned editor with video timecode pins and audio note
+                support.</p>
+            </div>
+
+            <div class="roadmap-item">
+              <div class="roadmap-badge upcoming">Upcoming</div>
+              <h4>Google Auth Login & 2FA</h4>
+              <p>One-click secure client login with Google OAuth and mandatory two-factor authentication for sensitive
+                assets.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-mark">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M4 6C4 4.89543 4.89543 4 6 4H18C19.1046 4 20 4.89543 20 6V18C20 19.1046 19.1046 20 18 20H6C4.89543 20 4 19.1046 4 18V6Z"
+                  stroke="#16A34A" stroke-width="2" />
+                <path d="M9 8L15 12L9 16V8Z" fill="#16A34A" />
+              </svg>
+            </div>
+            <span class="logo-title">EditDesk</span>
+          </div>
+          <p class="footer-tagline">
+            The dedicated client portal for video editors, freelance creatives, and post-production agencies by GT
+            Edits.
+          </p>
+        </div>
+
+        <div class="footer-nav-col">
+          <h5 class="footer-col-title">Navigation</h5>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#value-prop">Value Proposition</a></li>
+            <li><a href="#how-it-works">Key Features</a></li>
+            <li><a href="#future-scope">Future Scope</a></li>
+            <li><a href="EditDesk.pptx" download>Download Deck (.pptx)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-col">
+          <h5 class="footer-col-title">Technology</h5>
+          <ul>
+            <li><a href="#value-prop">Google Gemini API</a></li>
+            <li><a href="#value-prop">Google Drive API v3</a></li>
+            <li><a href="#value-prop">Email Automation</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-col">
+          <h5 class="footer-col-title">Connect</h5>
+          <ul>
+            <li><a href="mailto:gtbtbhay22@gmail.com">Email Us</a></li>
+            <li><a href="https://instagram.com/gt._.edits" target="_blank" rel="noopener noreferrer">Instagram:
+                @gt._.edits</a></li>
+            <li><a href="https://gtedits-clientportal.vercel.app/">Client Portal Login</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EditDesk by GT Edits. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#hero" id="backToTopBtn" class="back-to-top">
+            <span>Back to top</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 15l-6-6-6 6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ARTICLE READER MODAL -->
+  <div class="modal-overlay" id="articleModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-header">
+        <div>
+          <span class="badge-sparkle" id="articleModalBadge">Article</span>
+          <h3 class="modal-title" id="articleModalTitle">Article Title</h3>
+        </div>
+        <button class="modal-close-btn" id="closeArticleModal" aria-label="Close article modal">&times;</button>
+      </div>
+      <div class="modal-body" id="articleModalBody">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast-notification" id="toastNotification">
+    <div class="toast-icon">✓</div>
+    <div class="toast-message" id="toastMessage">Success!</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

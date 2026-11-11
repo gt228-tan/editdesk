@@ -1,37 +1,112 @@
-# EditDesk — Client Portal by GT Edits
+# EditDesk — Client Portal & Creative Operations Hub by GT Edits
 
-> The all-in-one client portal designed for video editors, freelance creatives, and creative agencies to simplify communication, project tracking, deliverable approvals, and payment management.
+> A modern, full-stack client portal and creative operations management platform designed for video editing studios, agencies, and freelance creatives to streamline communication, project tracking, deliverable approvals, and automated billing.
 
 ---
 
 ## 📌 Overview
 
-**EditDesk** is built to eliminate the chaos of scattered WhatsApp chats, ambiguous client feedback, lost Google Drive links, and delayed milestone payments. 
+**EditDesk** replaces the friction of scattered WhatsApp chats, ambiguous client feedback, lost Google Drive links, and delayed milestone payments with a unified, high-performance workspace.
 
-By integrating **Google Gemini API** for intelligent brief generation & cost estimation alongside **Google Drive API v3** for hands-free asset provisioning, EditDesk unifies the entire client post-production workflow into one transparent dashboard.
+By combining **Google Gemini AI** and **browser-native Voice Dictation** for instant brief scoping, **Google Drive API v3** for hands-free asset provisioning, **Brevo API** for high-deliverability transactional emails, and an interactive **Invoicing & PDF Engine**, EditDesk powers the entire client post-production workflow end-to-end.
 
 ---
 
 ## ✨ Key Features
 
-- **⚡ AI Brief Planner & Cost Estimation (Google Gemini API)**
-  - Automatically translates raw client requirements into structured, unambiguous project briefs.
-  - Pinpoints missing technical specifications (aspect ratios, frame rates, audio licensing, source files).
-  - Matches client keywords with your agency's predefined rate chart to compute instantaneous quotes and turnaround forecasts.
-  - Cuts client onboarding time by up to 60%.
+### 🎙️ AI Brief Planner & Voice Dictation (Google Gemini AI)
+- **Speech-to-Text Input:** Built-in microphone voice dictation powered by browser Web Speech API (`SpeechRecognition` / `webkitSpeechRecognition`).
+- **Automated Technical Scoping:** Parses raw client prompts and pinpoints missing specs (aspect ratios, frame rates, color profiles, audio stems, source files).
+- **Predefined Rate-Chart Costing:** Matches project keywords against custom studio pricing cards to calculate instant quotes and turnaround estimates.
+- **Triage to Project:** Admins can approve incoming client requests directly into active projects with a single click.
 
-- **📂 Automated Cloud Asset Workspaces (Google Drive API v3)**
-  - Automatically provisions dedicated project directory trees (`/Footage_Inputs`, `/Audio_Stems`, `/Drafts_V1_V3`, `/Final_Masters`).
-  - Grants clients secure upload-only access to raw assets.
-  - Provides a quick-deliverable panel for editors to export and share master cuts without repetitive manual setup.
+### 📂 Automated Cloud Asset Workspaces (Google Drive API v3)
+- **Zero-Touch Provisioning:** Automatically generates standardized client directory trees (`/Footage_Inputs`, `/Audio_Stems`, `/Drafts_V1_V3`, `/Final_Masters`).
+- **Flexible Authentication:** Supports Service Account JSON strings (ideal for cloud serverless environments like Render & Vercel), service account files, environment variables, or OAuth2.
+- **Quick-Deliverables Panel:** Pre-filled client Drive URLs and upload links for swift asset export and client sharing.
 
-- **📬 Dual-Role Email & Workflow Notifications**
-  - **Admin View:** Centralized management of incoming work requests, timecoded revision tickets, and milestone sign-offs.
-  - **Client View:** One-click review of draft cuts, revision submissions, invoice tracking, and download access.
+### 🧾 Invoicing & Vector PDF Billing Suite
+- **Interactive Invoice Builder (`InvoiceGeneratorModal`):**
+  - Sequential invoice numbering (`#001`, `#002`, etc.).
+  - Multi-item line entry: Description, Quantity, Unit Rate, and automated row totals.
+  - Dynamic financial math: Subtotal, Discount, Tax/GST %, Advance deductions, and Remaining Balance Due (`Math.max(0, amt - adv)`).
+  - Persistent bank details (Account Name, Account Number, IFSC, Bank Name, Branch) and Digital Signature uploads saved across sessions.
+- **Live Invoice Preview (`InvoicePreviewModal`):** Realistic in-app preview matching official printed invoices prior to dispatch.
+- **Branded Vector PDF Downloads (`jspdf` + `jspdf-autotable`):** Clean, professional PDF generation formatted in `Rs.` with bank tables and digital signatures.
+- **One-Click "Mark as Paid":** Toggle payment status directly from the project tracker or dedicated invoice hub.
 
-- **🔒 Milestone Approvals & Payment Security**
-  - Locks final master uncompressed deliverables until milestone sign-off and payment clearance.
-  - Reduces payment delays and scope creep.
+### 📬 High-Deliverability Transactional Emails (Brevo API)
+- **Direct-to-Inbox Delivery:** Powered by official Brevo REST API (`@getbrevo/brevo` v6) engineered to bypass spam and promotions folders.
+- **Automated Trigger Events:**
+  - **New Deliverable Upload:** Notification with one-click portal review button.
+  - **Request Approved / Rejected:** Client notification with admin feedback notes.
+  - **Payment & Invoice Reminders:** Formal notice with the generated **Invoice PDF attached as a Base64 buffer**.
+  - **Admin Alerts:** Instant notification when a client submits a brief or requests revisions.
+
+### 📊 Tabbed Admin Command Center
+- **📊 Dashboard:** High-level metrics, active project counters, total revenue, and a slide-out **Overdue Tasks Drawer**.
+- **👥 Clients:** Client directory, one-click credential generation popup (`CredentialModal`), and direct links to provisioned Drive folders.
+- **📁 Projects:** Master project tracker with budget editing, client association, deliverable hub, and "Mark as Paid" toggles.
+- **📥 Requests:** Triage incoming client briefs, inspect AI scoping/cost estimations, and approve or decline with notes.
+- **🧾 Invoices:** Dedicated invoice hub with search (by # or client name), status filters (`All`, `Pending`, `Paid`), financial metrics (Total Billed, Total Collected, Total Pending), live preview, editing, and deletion.
+
+### 🎬 Interactive Deliverables Hub & Revisions
+- **In-Browser Review Player:** Video and image preview with playback controls, watermarking indicators, and version tracking.
+- **Itemized Revision Checklists:** Clients submit timestamped markers directly against specific deliverable versions.
+- **Embedded Calendly Sync:** Integrated one-click meeting scheduling for client-editor sync calls.
+- **Milestone Protection:** Unlocks master uncompressed download access only upon milestone sign-off and payment clearance.
+
+### 🌓 Adaptive Dark & Light Theme Engine
+- Seamless theme switching engineered for dim color-grading suites and bright client offices.
+- Mobile-compact pill toggle controls with persistent theme preferences.
+
+---
+
+## 🛠️ Tech Stack & Architecture
+
+### Production Client Portal (`gtclientportal`)
+- **Frontend SPA:** React 18, Vite 5, React Router DOM v6, CSS Variables Theme Engine, `jspdf`, `jspdf-autotable`, Web Speech API.
+- **Backend Service:** Node.js, Express 5, MongoDB Atlas (Mongoose ODM v9), Firebase Admin SDK.
+- **Authentication & Realtime State:** Firebase Auth & Firebase Realtime Database.
+- **AI Engine:** Google Gemini API (`@google/genai` v2 & `@google/generative-ai` v0.24).
+- **Cloud Storage:** Google APIs (`googleapis` Drive API v3).
+- **Transactional Email:** Brevo REST API (`@getbrevo/brevo` v6).
+- **Deployment:** Vercel (Frontend SPA) + Render (Backend Express Web Service).
+
+### Explainer & Landing Website (`EditDesk-Explainer`)
+- **Structure:** Semantic HTML5 (`index.html`).
+- **Styling:** Pure Vanilla CSS Design System (`style.css`), high-contrast editorial SaaS aesthetic (#16A34A Forest Green & #F4F5F6 Neutral Canvas).
+- **Interactivity:** Vanilla JavaScript (`script.js`) with responsive drawer, scrollspy, and modal dialogs.
+
+```text
+┌────────────────────────────────────────────────────────────────────────┐
+│                             Client Browser                             │
+│       (React 18 + Vite SPA • Dark/Light Engine • Speech-to-Text)       │
+└──────────────┬─────────────────────────┬───────────────────────────────┘
+               │                         │
+      Firebase Auth & RTDB        REST API Requests
+  (Users, Clients & Invoices)            │
+               │                         ▼
+               ▼              ┌──────────────────────────────────────────┐
+    ┌──────────────────────┐  │              Express Server              │
+    │   Firebase Backend   │  │          (Node.js + Middleware)          │
+    │  • Auth Sessions     │  └──────┬───────────┬───────────┬───────────┘
+    │  • Realtime Data     │         │           │           │
+    │  • Client Invoices   │         │           │           │
+    └──────────────────────┘         ▼           ▼           ▼
+                         ┌──────────────┐ ┌──────────────┐ ┌─────────────┐
+                         │   MongoDB    │ │  Brevo API   │ │Google Gemini│
+                         │   Atlas      │ │ (Inbox Email │ │  AI Planner │
+                         │  (Projects & │ │ & Invoices)  │ └─────────────┘
+                         │Deliverables) │ └──────────────┘
+                         └──────┬───────┘
+                                │
+                                ▼
+                         ┌──────────────┐
+                         │ Google Drive │
+                         │   API (v3)   │
+                         └──────────────┘
+```
 
 ---
 
@@ -44,18 +119,7 @@ By integrating **Google Gemini API** for intelligent brief generation & cost est
 
 ---
 
-## 🎨 Design System
-
-The landing page follows a clean, editorial SaaS aesthetic crafted with pure Vanilla CSS:
-- **Brand Primary:** `#16A34A` (Forest Green)
-- **Neutral Canvas:** `#F4F5F6` (Light Clean Gray)
-- **Card Surfaces:** `#FFFFFF` (Crisp White with `#E2E8F0` border)
-- **Typography:** Outfit (Headings) & Plus Jakarta Sans (Body)
-- **Zero Gradients:** Solid, high-contrast, human-crafted layout free of AI gradient slop.
-
----
-
-## 📁 Project Structure
+## 📁 Repository Structure
 
 ```text
 EditDesk-Explainer/
@@ -65,30 +129,32 @@ EditDesk-Explainer/
 │       ├── article-ai-brief.jpg          # Article thumbnail: AI Briefing
 │       ├── article-drive-automation.jpg  # Article thumbnail: Drive Automation
 │       └── article-revisions-payment.jpg # Article thumbnail: Revisions & Escrow
-├── index.html                            # Semantic HTML5 landing page structure
-├── style.css                             # Pure Vanilla CSS design system
-├── script.js                             # Vanilla JS (navigation, scrollspy, modals)
-├── sitedetail.md                         # Product specifications & feature scope
-└── README.md                             # Project documentation
+├── index.html                            # Explainer landing page (Semantic HTML5)
+├── style.css                             # Design system & responsive layout (Vanilla CSS)
+├── script.js                             # Interactive navigation & modals (Vanilla JS)
+├── EditDesk.pptx                         # Project presentation deck
+├── sitedetail.md                         # Original feature scope
+├── updated_details.md                    # Comprehensive full-stack portal documentation
+└── README.md                             # Project overview & architectural guide
 ```
 
 ---
 
-## 🛠️ Getting Started Locally
+## 🛠️ Getting Started Locally (Explainer Landing Page)
 
-No complex build steps or dependencies required.
+No build tools or heavy package dependencies required for the explainer website.
 
-1. **Clone or download the repository:**
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/gt228-tan/editdesk.git
    cd editdesk
    ```
 
-2. **Open the project in your browser:**
-   - Double-click `index.html` to open it directly in any modern browser.
-   - Or serve using any static server:
+2. **Open in browser:**
+   - Double-click `index.html` to open directly in any modern browser.
+   - Or serve with any static web server:
      ```bash
-     # Using Python
+     # Using Python 3
      python -m http.server 3000
 
      # Using Node / npx
@@ -97,16 +163,20 @@ No complex build steps or dependencies required.
 
 ---
 
-## 🔮 Future Roadmap
+## 🔮 Roadmap & Release Status
 
-- [ ] **Multi-Team Agency Workspaces:** Granular role permissions and multi-editor assignment.
-- [ ] **AI Financial Analytics:** Predictive studio revenue tracking and project margin calculations.
-- [ ] **Automated Payment Reminders:** Custom email and SMS notifications before due dates.
+- [x] **Automated Payment Reminders:** Dispatches formal notices with attached PDF invoices via Brevo API (`POST /api/deliverables/:deliverableId/remind-payment`).
+- [x] **Microphone Voice Dictation:** Client speech-to-text brief drafting via Web Speech API.
+- [x] **Sequential Invoicing & Branded PDF Engine:** Custom invoice builder, bank details, signatures, and instant vector PDF downloads.
+- [x] **Tabbed Admin Control Center:** Clean 5-tab workflow with overdue deliverable triage.
+- [ ] **Multi-Team Agency Workspaces:** Granular role permissions, multi-editor project assignment, and team revenue splitting.
+- [ ] **AI Financial Analytics & Margin Reporting:** Predictive studio revenue tracking, project margin calculations, and editor capacity metrics.
 - [ ] **Real-Time In-Portal Chat:** Live messaging between client and assigned editor with video timecode pins.
-- [ ] **Google Auth & 2FA:** One-click Google OAuth authentication and two-factor asset security.
+- [ ] **Google OAuth & 2FA:** One-click Google authentication and mandatory two-factor asset security.
+- [ ] **WhatsApp Business Webhook Sync:** Automated two-way milestone and delivery alerts via WhatsApp.
 
 ---
 
 ## 📄 License & Credits
 
-Developed with ❤️ by **GT Edits** &copy; 2026. All rights reserved.
+Developed with ❤️ by **Tanishq Mehta — GT Edits** &copy; 2026. All rights reserved.

@@ -12,7 +12,37 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=3.2">
+  <style>
+    /* Critical Navbar & Card Layout Guards */
+    .navbar-container { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 16px; }
+    .logo { display: flex; align-items: center; gap: 12px; flex-shrink: 0; margin-right: 16px; min-width: max-content; }
+    .logo-title { white-space: nowrap; }
+    .logo-tag { white-space: nowrap; }
+    .nav-menu { display: flex; align-items: center; justify-content: center; flex-shrink: 1; }
+    .nav-links { display: flex; align-items: center; gap: clamp(12px, 1.8vw, 24px); list-style: none; margin: 0; padding: 0; }
+    .nav-link { white-space: nowrap !important; font-size: 0.92rem; font-weight: 600; padding: 6px 0; }
+    .nav-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+
+    /* Command Center / Capabilities Section & Cards */
+    .command-center-section { padding: 96px 0; background-color: var(--bg-canvas, #F4F5F6); border-top: 1px solid var(--border-subtle, #E2E8F0); border-bottom: 1px solid var(--border-subtle, #E2E8F0); }
+    .platform-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .platform-card { background-color: #FFFFFF !important; border: 1px solid var(--border-subtle, #E2E8F0); border-radius: var(--radius-lg, 16px); padding: 32px 26px; display: flex; flex-direction: column; transition: all 0.25s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    .platform-card:hover { transform: translateY(-3px); border-color: var(--primary, #16A34A); box-shadow: 0 10px 20px -5px rgba(22, 163, 74, 0.15); }
+    .platform-card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+    .platform-icon { width: 44px; height: 44px; border-radius: 10px; background-color: #DCFCE7; border: 1px solid #BBF7D0; color: #16A34A; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .platform-icon svg { stroke: #16A34A; }
+    .platform-card-title { font-size: 1.15rem; font-weight: 700; color: #0F172A; margin: 0; font-family: 'Outfit', sans-serif; }
+    .platform-card-desc { font-size: 0.9rem; color: #475569; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
+    .platform-tag { display: inline-flex; align-items: center; align-self: flex-start; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #16A34A; background-color: #DCFCE7; border: 1px solid #BBF7D0; padding: 4px 10px; border-radius: 9999px; margin-top: auto; }
+
+    @media (max-width: 1024px) {
+      .platform-grid { grid-template-columns: repeat(2, 1fr); max-width: 760px; margin: 0 auto; }
+    }
+    @media (max-width: 768px) {
+      .platform-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+    }
+  </style>
 </head>
 
 <body>
@@ -39,10 +69,11 @@
       <nav class="nav-menu" id="navMenu" aria-label="Main Navigation">
         <ul class="nav-links">
           <li><a href="#hero" class="nav-link active">Home</a></li>
-          <li><a href="#value-prop" class="nav-link">Value Proposition</a></li>
-          <li><a href="#how-it-works" class="nav-link">Key Features</a></li>
+          <li><a href="#value-prop" class="nav-link">Overview</a></li>
+          <li><a href="#how-it-works" class="nav-link">Features</a></li>
+          <li><a href="#command-center" class="nav-link">Workspace</a></li>
           <li><a href="#future-scope" class="nav-link">Roadmap</a></li>
-          <li><a href="EditDesk.pptx" download class="nav-link">Download Deck (.pptx)</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </nav>
 
@@ -56,7 +87,7 @@
           </svg>
           <span>@gt._.edits</span>
         </a>
-        <a href="https://gtedits-clientportal.vercel.app/" class="btn btn-primary nav-portal-btn">
+        <a href="https://gtedits-clientportal.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary nav-portal-btn">
           <span>Client Portal</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M5 12h14M12 5l7 7-7 7" />
@@ -80,7 +111,9 @@
         <li><a href="#hero" class="drawer-link">Home</a></li>
         <li><a href="#value-prop" class="drawer-link">Value Proposition</a></li>
         <li><a href="#how-it-works" class="drawer-link">Key Features</a></li>
-        <li><a href="#future-scope" class="drawer-link">Future Scope</a></li>
+        <li><a href="#command-center" class="drawer-link">Workspace Hub</a></li>
+        <li><a href="#future-scope" class="drawer-link">Roadmap</a></li>
+        <li><a href="#contact" class="drawer-link">Contact</a></li>
         <li><a href="EditDesk.pptx" download class="drawer-link">Download Deck (.pptx)</a></li>
       </ul>
 
@@ -95,7 +128,7 @@
         <div class="hero-content">
           <div class="hero-pill">
             <span class="pill-dot"></span>
-            <span>Client Portal by GT Edits &bull; AI Powered</span>
+            <span>Client Portal by GT Edits &bull; Gemini AI & Voice Scoping</span>
           </div>
 
           <h1 class="hero-title">
@@ -103,14 +136,14 @@
           </h1>
 
           <p class="hero-description">
-            EditDesk simplifies communication, project tracking, deliverable approvals, and payment management. Powered
-            by Google Gemini API for AI briefs and cost estimation, plus Google Drive API v3 for hands-free asset
-            automation.
+            EditDesk unifies post-production communication, project tracking, deliverable approvals, and client billing.
+            Powered by Google Gemini AI with voice dictation for instant briefs & cost estimation, Google Drive API v3
+            for asset automation, and Brevo for high-deliverability transactional notifications.
           </p>
 
           <!-- Wireframe BUTTON -->
           <div class="hero-cta-group">
-            <a href="#" class="btn btn-primary btn-lg" id="heroPortalBtn">
+            <a href="https://gtedits-clientportal.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" id="heroPortalBtn">
               <span>Launch Client Portal</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7" />
@@ -138,7 +171,7 @@
               </div>
               <div class="window-title">EditDesk &mdash; Live Project Hub & Gemini AI</div>
               <div class="window-badge">
-                <span class="pulse-indicator"></span> Synced v3.1
+                <span class="pulse-indicator"></span> Production v3.1
               </div>
             </div>
             <div class="mockup-image-box">
@@ -154,8 +187,8 @@
                   </svg>
                 </div>
                 <div class="badge-text">
-                  <strong>Gemini AI Planner</strong>
-                  <span>Cost: $1,450 &bull; 48hr ETA</span>
+                  <strong>Gemini AI & Voice Scoping</strong>
+                  <span>Cost: Rs. 18,500 &bull; 48hr ETA</span>
                 </div>
               </div>
 
@@ -166,8 +199,8 @@
                   </svg>
                 </div>
                 <div class="badge-text">
-                  <strong>Drive API v3 Automated</strong>
-                  <span>Dedicated Client Folders Created</span>
+                  <strong>Drive Sync & Brevo Reminders</strong>
+                  <span>Auto Folders & Attached Invoices</span>
                 </div>
               </div>
             </div>
@@ -221,10 +254,10 @@
                   </svg>
                 </div>
                 <div class="check-content">
-                  <h4>AI Brief Planner & Smart Cost Estimation</h4>
-                  <p>Powered by Google Gemini API to parse client requests, pinpoint missing project specs, recommend
-                    ideal video resolutions & formats, and automatically calculate estimated pricing against your rate
-                    chart.</p>
+                  <h4>AI Brief Planner & Voice Dictation</h4>
+                  <p>Powered by Google Gemini API and browser Web Speech API. Clients can dictate or type their requirements;
+                    the AI pinpoints missing specs (aspect ratios, frame rates, audio stems), recommends formats, and
+                    automatically calculates estimates against your custom rate chart.</p>
                 </div>
               </li>
 
@@ -236,9 +269,9 @@
                   </svg>
                 </div>
                 <div class="check-content">
-                  <h4>Google Drive API v3 Automatic Folder Provisioning</h4>
-                  <p>Instantly spins up dedicated client workspaces, organizes raw footage inputs, project files, and
-                    deliverable review directories with zero manual drag-and-drop setup.</p>
+                  <h4>Google Drive API v3 Automatic Workspaces</h4>
+                  <p>Instantly provisions standardized client directory trees (/Footage_Inputs, /Audio_Stems, /Drafts_V1_V3,
+                    /Final_Masters) via Service Account JSON or OAuth2 credentials with zero manual file setup.</p>
                 </div>
               </li>
 
@@ -250,9 +283,9 @@
                   </svg>
                 </div>
                 <div class="check-content">
-                  <h4>Two-Way Email & Workflow Updates</h4>
-                  <p>Admins manage new work requests, approve or request revisions; clients get clear notifications for
-                    draft releases, deliverable reviews, and timely payment reminders.</p>
+                  <h4>Brevo High-Deliverability Email Notifications</h4>
+                  <p>Direct-inbox transactional emails for deliverable uploads, work request approvals/rejections, and
+                    automated payment reminders with attached PDF statements—engineered to bypass spam filters.</p>
                 </div>
               </li>
 
@@ -264,9 +297,9 @@
                   </svg>
                 </div>
                 <div class="check-content">
-                  <h4>Deliverables, Revision Approvals & Secure Payments</h4>
-                  <p>Clients can approve, reject, or comment on video versions in place. Protect your creative agency by
-                    linking final master delivery directly to milestone approval.</p>
+                  <h4>Full Invoicing, PDF Billing & Milestone Security</h4>
+                  <p>Sequential invoice auto-numbering (#001), itemized line entry, dynamic tax/discount/advance math,
+                    persistent bank details, digital signatures, and instant client-side vector PDF downloads in Rs.</p>
                 </div>
               </li>
             </ul>
@@ -282,11 +315,11 @@
           <span class="section-tag">Workflow</span>
           <h2 class="section-title">Key Features</h2>
           <p class="section-subtitle">
-            A frictionless, automated three-step journey from raw client concept to finalized video deliverable.
+            A frictionless, automated four-step journey from raw client concept to paid, finalized deliverables.
           </p>
         </div>
 
-        <!-- 3 Cards in a Row (as depicted in Wireframe) -->
+        <!-- 4 Cards in a Responsive Grid -->
         <div class="steps-grid">
           <!-- Step Card 1 -->
           <div class="step-card">
@@ -298,14 +331,13 @@
                 </svg>
               </div>
             </div>
-            <h3 class="step-card-title">Gemini AI Briefing & Costing</h3>
+            <h3 class="step-card-title">Voice Briefing & Gemini AI</h3>
             <p class="step-card-text">
-              Clients input project vision. Google Gemini API analyzes keywords, asks targeted follow-ups, recommends
-              deadlines & output formats, and matches tasks against your predefined rate chart to generate an accurate
-              brief and quote.
+              Clients dictate or type project requirements using browser speech-to-text. Google Gemini AI parses prompts,
+              identifies missing specs, suggests turnaround times, and calculates cost estimates against your rate chart.
             </p>
             <div class="step-card-footer">
-              <span class="step-pill">Automated Scoping</span>
+              <span class="step-pill">Voice & AI Scoping</span>
             </div>
           </div>
 
@@ -319,11 +351,10 @@
                 </svg>
               </div>
             </div>
-            <h3 class="step-card-title">Google Drive Auto-Sync</h3>
+            <h3 class="step-card-title">Automated Drive Workspaces</h3>
             <p class="step-card-text">
-              Upon brief approval, EditDesk triggers Google Drive API v3 to instantly generate client project
-              hierarchies, upload targets for raw footage, and a private quick-deliverable admin panel to cut out manual
-              setup tasks.
+              Upon brief approval, EditDesk triggers Google Drive API v3 to automatically spin up client directory trees,
+              private upload targets for raw footage, and a quick-deliverable admin panel to cut out manual setup.
             </p>
             <div class="step-card-footer">
               <span class="step-pill">Zero Manual Folders</span>
@@ -336,31 +367,174 @@
               <span class="step-number">03</span>
               <div class="step-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M9 11l3 3L22 4" />
-                  <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+                  <polygon points="5 3 19 12 5 21 5 3" />
                 </svg>
               </div>
             </div>
-            <h3 class="step-card-title">Review, Revise & Get Paid</h3>
+            <h3 class="step-card-title">Review, Revise & Calendly</h3>
             <p class="step-card-text">
-              Clients review draft cuts, submit timecode-based feedback, approve milestones, or request revisions.
-              Automated email notifications keep everyone in sync, and final high-res renders are delivered as payment
-              clears.
+              Clients stream draft cuts in-portal, check watermarking indicators, and submit itemized timestamped revision
+              checklists. Integrated 1-click Calendly allows instant meeting scheduling for project sync calls.
             </p>
             <div class="step-card-footer">
-              <span class="step-pill">Milestone Settlement</span>
+              <span class="step-pill">Timecode Notes & Sync</span>
+            </div>
+          </div>
+
+          <!-- Step Card 4 -->
+          <div class="step-card">
+            <div class="step-card-header">
+              <span class="step-number">04</span>
+              <div class="step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="16" y1="13" x2="8" y2="13" />
+                  <line x1="16" y1="17" x2="8" y2="17" />
+                  <polyline points="10 9 9 9 8 9" />
+                </svg>
+              </div>
+            </div>
+            <h3 class="step-card-title">Invoicing, PDF & Brevo Sync</h3>
+            <p class="step-card-text">
+              Admins generate branded invoices with sequential numbering (#001), advance payment deductions, and digital
+              signatures. Brevo API dispatches automated payment reminders with the generated PDF attached.
+            </p>
+            <div class="step-card-footer">
+              <span class="step-pill">Vector PDF & Email Sync</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- SECTION 4: PLATFORM COMMAND CENTER / CAPABILITIES -->
+    <section class="command-center-section" id="command-center">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Platform Capabilities</span>
+          <h2 class="section-title">A Modern Full-Stack Command Center</h2>
+          <p class="section-subtitle">
+            Engineered with React 18, Express 5, MongoDB Atlas, Firebase RTDB & Brevo to streamline every facet of creative operations.
+          </p>
+        </div>
 
+        <div class="platform-grid">
+          <!-- Feature 1 -->
+          <div class="platform-card">
+            <div class="platform-card-header">
+              <div class="platform-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="18" height="18" x="3" y="3" rx="2" />
+                  <path d="M3 9h18" />
+                  <path d="M9 21V9" />
+                </svg>
+              </div>
+              <h3 class="platform-card-title">Tabbed Admin Dashboard</h3>
+            </div>
+            <p class="platform-card-desc">
+              Organized navigation across Dashboard, Clients, Projects, Requests, and Invoices. Includes studio revenue metrics,
+              active project counters, and a slide-out Overdue Tasks Drawer for urgent deliverables.
+            </p>
+            <span class="platform-tag">Admin Command</span>
+          </div>
 
+          <!-- Feature 2 -->
+          <div class="platform-card">
+            <div class="platform-card-header">
+              <div class="platform-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1-2-1Z" />
+                  <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" />
+                  <path d="M12 6v12" />
+                </svg>
+              </div>
+              <h3 class="platform-card-title">Invoicing & PDF Engine</h3>
+            </div>
+            <p class="platform-card-desc">
+              Sequential numbering (#001), itemized row entry, dynamic tax/GST and discount math, advance deductions,
+              persistent bank details, digital signatures, and 1-click branded vector PDF generation formatted in Rs.
+            </p>
+            <span class="platform-tag">Billing Suite</span>
+          </div>
 
+          <!-- Feature 3 -->
+          <div class="platform-card">
+            <div class="platform-card-header">
+              <div class="platform-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <h3 class="platform-card-title">Client Directory & Credential Modals</h3>
+            </div>
+            <p class="platform-card-desc">
+              Manage client accounts with one-click credential generation popups, direct links to provisioned Google Drive
+              folders, password management modals, and client detail inspection.
+            </p>
+            <span class="platform-tag">Client Ops</span>
+          </div>
 
+          <!-- Feature 4 -->
+          <div class="platform-card">
+            <div class="platform-card-header">
+              <div class="platform-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="20" height="16" x="2" y="4" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+              </div>
+              <h3 class="platform-card-title">Brevo Direct-Inbox Alerts</h3>
+            </div>
+            <p class="platform-card-desc">
+              Powered by official Brevo REST API v6. Dispatches anti-spam transactional alerts for deliverable reviews,
+              work request approvals, and payment notices with Base64 PDF invoices attached.
+            </p>
+            <span class="platform-tag">Transactional Email</span>
+          </div>
 
-    <!-- SECTION 7: FUTURE SCOPE / ROADMAP (from sitedetail.md) -->
+          <!-- Feature 5 -->
+          <div class="platform-card">
+            <div class="platform-card-header">
+              <div class="platform-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="18" height="18" x="3" y="3" rx="2" />
+                  <path d="m9 8 6 4-6 4Z" />
+                </svg>
+              </div>
+              <h3 class="platform-card-title">Video Player & Watermarking</h3>
+            </div>
+            <p class="platform-card-desc">
+              In-browser deliverable review with playback controls, watermarking badges, download permission toggles, and
+              structured itemized revision request checklists.
+            </p>
+            <span class="platform-tag">Deliverables Hub</span>
+          </div>
+
+          <!-- Feature 6 -->
+          <div class="platform-card">
+            <div class="platform-card-header">
+              <div class="platform-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                </svg>
+              </div>
+              <h3 class="platform-card-title">Dark/Light Mode & Calendly</h3>
+            </div>
+            <p class="platform-card-desc">
+              Fluid theme switcher with mobile-compact pill controls tailored for dim editing rooms and bright client
+              workspaces, combined with embedded 1-click Calendly scheduling for sync calls.
+            </p>
+            <span class="platform-tag">Dual Theme & Sync</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: FUTURE SCOPE / ROADMAP -->
     <section class="future-scope-section" id="future-scope">
       <div class="container">
         <div class="roadmap-wrapper">
@@ -377,37 +551,80 @@
             <div class="roadmap-item">
               <div class="roadmap-badge in-progress">In Development</div>
               <h4>Multi-Team Agency Workspaces</h4>
-              <p>Expand EditDesk to support multi-editor creative agencies with granular role permissions and client
-                assignments.</p>
+              <p>Expand EditDesk to support multi-editor creative agencies with granular role permissions, editor assignments, and shared studio assets.</p>
             </div>
 
             <div class="roadmap-item">
               <div class="roadmap-badge upcoming">Upcoming</div>
-              <h4>AI Financial Analytics & Revenue</h4>
-              <p>Predictive studio revenue tracking, project margin calculations, and client lifetime value reporting.
-              </p>
+              <h4>AI Financial Analytics & Margin Reporting</h4>
+              <p>Predictive studio revenue forecasting, project margin calculations, editor utilization metrics, and client lifetime value reporting.</p>
             </div>
 
             <div class="roadmap-item">
               <div class="roadmap-badge upcoming">Upcoming</div>
-              <h4>Automated Payment Reminders</h4>
-              <p>Automated custom email and SMS schedules to notify clients before due dates with one-click payment
-                links.</p>
-            </div>
-
-            <div class="roadmap-item">
-              <div class="roadmap-badge upcoming">Upcoming</div>
-              <h4>Real-Time In-Portal Chat</h4>
-              <p>Direct live messaging between client and assigned editor with video timecode pins and audio note
-                support.</p>
+              <h4>Real-Time In-Portal Chat with Timecode Pins</h4>
+              <p>Direct live messaging between client and assigned editor with video timecode pins, attachment sharing, and audio note support.</p>
             </div>
 
             <div class="roadmap-item">
               <div class="roadmap-badge upcoming">Upcoming</div>
               <h4>Google Auth Login & 2FA</h4>
-              <p>One-click secure client login with Google OAuth and mandatory two-factor authentication for sensitive
-                assets.</p>
+              <p>One-click secure client login with Google OAuth and mandatory two-factor authentication for sensitive deliverables.</p>
             </div>
+
+            <div class="roadmap-item">
+              <div class="roadmap-badge upcoming">Upcoming</div>
+              <h4>WhatsApp Business Webhook Sync</h4>
+              <p>Optional two-way WhatsApp notification bot for clients who prefer project milestone pings and delivery notices on mobile.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: CONTACT & CREDENTIALS -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div class="contact-left">
+            <span class="section-tag">Get in Touch</span>
+            <h2 class="contact-title">Ready to Streamline Your Post-Production?</h2>
+            <p class="contact-desc">
+              Experience the future of video editor client collaboration. Launch the live portal or reach out directly
+              to discuss custom studio onboarding.
+            </p>
+            <div class="contact-buttons-group">
+              <a href="https://gtedits-clientportal.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+                <span>Launch Client Portal</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="mailto:gtbtbhay22@gmail.com" class="btn btn-secondary btn-lg">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="20" height="16" x="2" y="4" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+                <span>Email GT Edits</span>
+              </a>
+            </div>
+          </div>
+          <div class="credentials-badge-box">
+            <div class="cred-verified">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+              </svg>
+              <span>Verified GT Edits Studio</span>
+            </div>
+            <p>
+              Official client portal managed by GT Edits. Serving creators, marketing agencies, and post-production houses worldwide.
+            </p>
+            <a href="https://instagram.com/gt._.edits" target="_blank" rel="noopener noreferrer" class="social-cred-btn mt-2">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
+              <span>Follow @gt._.edits</span>
+            </a>
           </div>
         </div>
       </div>
@@ -443,7 +660,9 @@
             <li><a href="#hero">Home</a></li>
             <li><a href="#value-prop">Value Proposition</a></li>
             <li><a href="#how-it-works">Key Features</a></li>
-            <li><a href="#future-scope">Future Scope</a></li>
+            <li><a href="#command-center">Workspace Hub</a></li>
+            <li><a href="#future-scope">Roadmap</a></li>
+            <li><a href="#contact">Contact</a></li>
             <li><a href="EditDesk.pptx" download>Download Deck (.pptx)</a></li>
           </ul>
         </div>
@@ -451,9 +670,12 @@
         <div class="footer-nav-col">
           <h5 class="footer-col-title">Technology</h5>
           <ul>
-            <li><a href="#value-prop">Google Gemini API</a></li>
-            <li><a href="#value-prop">Google Drive API v3</a></li>
-            <li><a href="#value-prop">Email Automation</a></li>
+            <li><a href="#command-center">React 18 & Vite 5</a></li>
+            <li><a href="#command-center">Express 5 & Node.js</a></li>
+            <li><a href="#command-center">MongoDB & Firebase RTDB</a></li>
+            <li><a href="#how-it-works">Google Gemini AI (v2)</a></li>
+            <li><a href="#how-it-works">Google Drive API v3</a></li>
+            <li><a href="#how-it-works">Brevo Email API (v6)</a></li>
           </ul>
         </div>
 
